@@ -26,15 +26,20 @@ function createUrl() {
 				'el servidor devuelve el siguiente mensaje 2: '+
 				JSON.stringify(response.status)
 			);
-			console.log(
-				'el servidor devuelve el siguiente mensaje 3: '+
-				JSON.stringify(response.data)
-			);
-			let valor = `
+			if (response.data) {
+				console.log(
+					'el servidor devuelve el siguiente mensaje 3: '+
+					JSON.stringify(response.data)
+				);
+				let valor = `
 				<h2>Este es la URL generado</h2>
 				<a href="${response.data}">${response.data}</a>
-			`;
-			document.getElementById("resultado").innerHTML = valor;
+				`;
+				document.getElementById("resultado").innerHTML = valor;
+			}  else {
+				let valor ='';
+				document.getElementById("resultado").innerHTML = valor;
+			};
 		}
 	).catch(
 		(error) => { 
@@ -43,4 +48,3 @@ function createUrl() {
 		}
 	);
 };
-

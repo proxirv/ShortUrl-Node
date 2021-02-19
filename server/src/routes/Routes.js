@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const RouterUrl = require('./generateurl/url.js');
+const RouterUrl = require('./url/url.js');
 const UrlInstance = new RouterUrl();
 
 router.route('/test')
+    .post(
+        function(req,res){
+            UrlInstance.postTest(req,res);
+        }
+);
 
 router.route('/generateurl')
     .post(
